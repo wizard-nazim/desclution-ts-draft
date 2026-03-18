@@ -1,0 +1,188 @@
+body {
+  background-color: #000000dc; /* Slate 900 */
+  color: #f8fafc;
+  margin: 5cm;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(37, 34, 34, 0.685); 
+  backdrop-filter: blur(5px); 
+  border-bottom: 4.5px solid #20d64e;
+  list-style-type:lower-roman;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #ced1d6;
+  list-style-type: lower-latin;
+  transition: color 0.5s;
+}
+
+.nav-links a:hover {
+  color: #31ff6fb4; 
+  -webkit-text-stroke-width:1px;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+/* Banner */
+.banner {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.banner h1 {
+  margin: 0;
+  font-size: 3.5rem;
+}
+
+.banner p {
+  margin: 0.5rem 0 0;
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+
+
+/* Banner 2 */
+.sbanner{
+  background: linear-gradient(135deg, #000000, #f63b3b);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+
+
+
+/* Main container */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.add-track {
+  background: #1e293b;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid #334155;
+}
+
+.add-track form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-track input,
+.add-track button {
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.add-track button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-track button:hover {
+  background: #0ea5e9;
+}
+
+/* ── Tracklist ── */
+.tracklist {
+  background: #1e293b;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+#tracksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #0f172a;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  transition: transform 0.15s;
+}
+
+.track-item:hover {
+  transform: translateY(-3px);
+}
+
+.track-cover {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #334155; /* fallback if no image */
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.track-info p {
+  margin: 0.3rem 0 0;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.track-date {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-top: 1px solid #334155;
+  color: #ffffff;
+  margin-top: 3rem;
+}
+
+.footer p {
+  margin: 0.4rem 0;
+}
