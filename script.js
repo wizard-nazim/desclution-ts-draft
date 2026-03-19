@@ -24,21 +24,12 @@ const renderNavbar = (user) => {
       <div class="user-profile">
         ${user.firstName} (${user.role})
       </div>
-
-
-
-
-
-      
     </nav>
     
    <div class="hero">
       <h1>Welcome back, ${user.firstName}</h1>
-      <p>System Status: <span style="color: #00ff5e;">Online</span></p>
-    </div>
-      
-  
-    `;
+      <p> System Status: <span style="color: #00ff5e;">Online</span></p>
+    </div>`;
 };
 function renderTracks() {
     const list = document.getElementById("tracksList");
@@ -81,7 +72,7 @@ function addTrack(title, artist, coverUrl) {
 // Init
 const app = document.querySelector("#navbar");
 app.innerHTML = renderNavbar(currentUser);
-// Keep original super hero if you want 
+// Keep original super hero if you want nig
 // or remove .hero from renderNavbar if you new banner better
 // Form handling
 const form = document.getElementById("trackForm");

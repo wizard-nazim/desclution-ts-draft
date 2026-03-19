@@ -1,7 +1,7 @@
 body {
-  background-color: #000000dc; /* Slate 900 */
+  background-color: #000000dc; 
   color: #f8fafc;
-  margin: 5cm;
+  margin: 0cm;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -10,21 +10,20 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(37, 34, 34, 0.685); 
+  background: rgba(0, 0, 0, 0.685); 
   backdrop-filter: blur(5px); 
   border-bottom: 4.5px solid #20d64e;
-  list-style-type:lower-roman;
 }
 
 .nav-links {
   display: flex;
-  gap: 25px;
+  gap: 40px;
+  list-style:none;  
 }
 
 .nav-links a {
   color: #ced1d6;
-  list-style-type: lower-latin;
-  transition: color 0.5s;
+  transition: color 0s;
 }
 
 .nav-links a:hover {
@@ -47,7 +46,7 @@ body {
 }
 
 .banner h1 {
-  margin: 0;
+  margin:0px;
   font-size: 3.5rem;
 }
 
@@ -56,7 +55,6 @@ body {
   font-size: 1.3rem;
   opacity: 0.9;
 }
-
 
 
 /* Banner 2 */
@@ -68,55 +66,53 @@ body {
 }
 
 
-
-
 /* Main container */
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
 .add-track {
-  background: #1e293b;
+  background: #111010;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 50px;
   margin-bottom: 2rem;
-  border: 1px solid #334155;
+  border: 10px solid #000000;
 }
 
 .add-track form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .add-track input,
 .add-track button {
-  padding: 0.9rem;
+  padding: 1rem;
   font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #475569;
-  background: #0f172a;
+  border-radius: 90px;
+  border: 1px solid #3f4650;
+  background: #232324;
   color: #e2e8f0;
 }
 
 .add-track button {
-  background: #38bdf8;
-  color: #0f172a;
+  background: #085519c2;
+  color: #ffffff;
   border: none;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0s;
 }
 
 .add-track button:hover {
-  background: #0ea5e9;
+  background: #1b9621;
 }
 
 /* ── Tracklist ── */
 .tracklist {
-  background: #1e293b;
+  background: #111010;
   padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid #334155;
@@ -135,14 +131,17 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: #0f172a;
-  border-radius: 10px;
-  border: 1px solid #334155;
-  transition: transform 0.15s;
+  background: #1a1b1b;
+  border-radius: 25px;
+  border: 2px solid #334155;
+  transition:ease-out 1.15s;
 }
 
 .track-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-20px);
+  transform: translateX(-20px);
+
+
 }
 
 .track-cover {
