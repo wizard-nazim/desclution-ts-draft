@@ -57,7 +57,7 @@ class TrackManager {
             li.className = "track-item";
             const cover = track.coverUrl
                 ? `<img src="${track.coverUrl}" alt="${track.title} cover" class="track-cover">`
-                : `<div class="track-cover">💿</div>`;
+                : `<div class="track-cover">🎵</div>`;
             li.innerHTML = `
         ${cover}
         <div class="track-info">
@@ -119,7 +119,7 @@ if (hero)
 const manager = new TrackManager();
 setupForm(manager);
 // Demo tracks (only add if no stored tracks)
-if (localStorage.getItem("tracks")) {
+if (localStorage.getItem("tracks") === null) {
     manager.addTrack("Afternoon", "vetkat", "https://i1.sndcdn.com/artworks-Ud2YSLtr4yD33tIm-UsYZhA-t500x500.jpg?w=300&h=300&fit=crop");
     manager.addTrack("Sabr", "Nazim Rafudeen", "https://i1.sndcdn.com/artworks-alS5LTECt8b6FSwo-xyWdIg-t500x500.jpg?w=300&h=300&fit=crop");
     manager.addTrack("Breathe Deeper", "Tame Impala", "https://i1.sndcdn.com/artworks-pJs4W0WhnD1U-0-t500x500.jpg?w=300&h=300&fit=crop");

@@ -236,12 +236,13 @@ background-size: 100% 100%;
   color: #64748b;
 }
 
+
 /* Footer */
 .footer {
   text-align: center;
   padding: 2rem 1rem;
   background: rgba(0, 0, 0, 0.9);
-  border-top: 5px solid #126b17;
+  border-top: 5px solid #1b9621;
   color: #ffffff;
   margin-top: 3rem;
 }
@@ -250,4 +251,4 @@ background-size: 100% 100%;
   margin: 0.4rem 0;
 }
 
-/* ... keep all your existing styles ... */
+
