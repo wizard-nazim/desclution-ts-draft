@@ -1,4 +1,4 @@
-// Types & Interfaces 
+// Types & Interfaces
 interface User {
   firstName: string;
   lastName: string;
@@ -9,119 +9,195 @@ interface Track {
   id: number;
   title: string;
   artist: string;
-  coverUrl?: string;     // optional
+  coverUrl?: string;
   addedAt: Date;
 }
 
-//  Data
+// Data
 const currentUser: User = {
   firstName: "Wizard",
   lastName: "Nazim",
-  role: "Admin"
+  role: "Admin",
 };
 
-let tracks: Track[] = [];           // my "database"
-let nextId = 1;
+// Track Manager Class
+class TrackManager {
+  private tracks: Track[] = [];
+  private nextId = 1;
 
-// Functions 
-const renderNavbar = (user: User): string => {
-  return `
+  constructor() {
+    this.loadFromStorage();
+    this.renderTracks();
+  }
 
-    <nav class="navbar">
-     
+  private saveToStorage() {
+    localStorage.setItem("tracks", JSON.stringify(this.tracks));
+    localStorage.setItem("nextId", this.nextId.toString());
+  }
+
+  private loadFromStorage() {
+    const storedTracks = localStorage.getItem("tracks");
+    const storedNextId = localStorage.getItem("nextId");
+
+    if (storedTracks) {
+      this.tracks = JSON.parse(storedTracks).map((t: any) => ({
+        ...t,
+        addedAt: new Date(t.addedAt),
+      }));
+    }
+    if (storedNextId) {
+      this.nextId = parseInt(storedNextId, 10);
+    }
+  }
+
+  addTrack(title: string, artist: string, coverUrl?: string) {
+    const newTrack: Track = {
+      id: this.nextId++,
+      title,
+      artist,
+      coverUrl,
+      addedAt: new Date(),
+    };
+    this.tracks.push(newTrack);
+    this.saveToStorage();
+    this.renderTracks();
+  }
+
+  deleteTrack(id: number) {
+    this.tracks = this.tracks.filter(track => track.id !== id);
+    this.saveToStorage();
+    this.renderTracks();
+  }
+
+  renderTracks() {
+    const list = document.getElementById("tracksList") as HTMLUListElement | null;
+    if (!list) return;
+
+    list.innerHTML = "";
+    this.tracks.forEach(track => {
+      const li = document.createElement("li");
+      li.className = "track-item";
+
+      const cover = track.coverUrl
+        ? `<img src="${track.coverUrl}" alt="${track.title} cover" class="track-cover">`
+        : `<div class="track-cover">💿</div>`;
+
+      li.innerHTML = `
+        ${cover}
+        <div class="track-info">
+          <h3>${track.title}</h3>
+          <p>${track.artist}</p>
+        </div>
+        <div class="track-date">
+          Added: ${track.addedAt.toLocaleDateString()}
+        </div>
+        <button class="delete-btn">✖</button>
+      `;
+
+      const deleteBtn = li.querySelector(".delete-btn") as HTMLButtonElement;
+      deleteBtn.addEventListener("click", () => this.deleteTrack(track.id));
+
+      list.appendChild(li);
+    });
+  }
+}
+
+// Rendering Functions
+const renderNavbar = (user: User): string => `
+  <nav class="navbar">
     <div class="logo"><strong>Desclution</strong></div>
+    <ul class="nav-links">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Media</a></li>
+    </ul>
+    <div class="user-profile">${user.firstName} (${user.role})</div>
+  </nav>
+`;
 
-      <ul class="nav-links">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Media</a></li>
-      </ul>
-      
-      <div class="user-profile">
-        ${user.firstName} (${user.role})
-      </div>
-    </nav>
-    
-   <div class="hero">
-      <h1>Welcome back, ${user.firstName}</h1>
-      <p> System Status: <span style="color: #00ff5e;">Online</span></p>
-    </div>`;
-};
+const renderHero = (user: User): string => `
+  <div class="hero">
+    <h1>Welcome back, ${user.firstName}</h1>
+    <p>System Status: <span style="color: #00ff5e;">Online</span></p>
+  </div>
+`;
 
-function renderTracks() {
-  const list = document.getElementById("tracksList") as HTMLUListElement;
-  if (!list) return;
+// Form Setup
+function setupForm(manager: TrackManager) {
+  const form = document.getElementById("trackForm") as HTMLFormElement | null;
+  if (!form) return;
 
-  list.innerHTML = ""; // clear
-
-  tracks.forEach(track => {
-    const li = document.createElement("li");
-    li.className = "track-item";
-
-    const cover = track.coverUrl 
-      ? `<img src="${track.coverUrl}" alt="${track.title} cover" class="track-cover">`
-      : `<div class="track-cover" style="display:flex; align-items:center; justify-content:center; font-size:2rem;">🎵</div>`;
-
-    li.innerHTML = `
-      
-    ${cover}
-      <div class="track-info">
-        <h3>${track.title}</h3>
-        <p>${track.artist}</p>
-      </div>
-
-      <div class="track-date">
-        Added: ${track.addedAt.toLocaleDateString()}
-      </div>
-      
-    `;
-
-    list.appendChild(li);
-  });
-}
-
-function addTrack(title: string, artist: string, coverUrl?: string) {
-  const newTrack: Track = {
-    id: nextId++,
-    title,
-    artist,
-    coverUrl,
-    addedAt: new Date()
-  };
-
-  tracks.push(newTrack);
-  renderTracks();
-}
-
-// Init
-const app = document.querySelector("#navbar") as HTMLElement;
-app.innerHTML = renderNavbar(currentUser);
-
-// Keep original super hero if you want nig
-// or remove .hero from renderNavbar if you new banner better
-
-// Form handling
-const form = document.getElementById("trackForm") as HTMLFormElement;
-if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const titleInput = document.getElementById("title") as HTMLInputElement;
-    const artistInput = document.getElementById("artist") as HTMLInputElement;
-    const coverInput = document.getElementById("coverUrl") as HTMLInputElement;
-
-    const title = titleInput.value.trim();
-    const artist = artistInput.value.trim();
-    const cover = coverInput.value.trim() || undefined;
+    const title = (document.getElementById("title") as HTMLInputElement).value.trim();
+    const artist = (document.getElementById("artist") as HTMLInputElement).value.trim();
+    const cover = (document.getElementById("coverUrl") as HTMLInputElement).value.trim() || undefined;
 
     if (title && artist) {
-      addTrack(title, artist, cover);
+      manager.addTrack(title, artist, cover);
       form.reset();
     }
   });
 }
 
-// demo tracks:
-addTrack("Midnight Echoes", "Luna Waves", "https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=300&h=300&fit=crop");
-addTrack("Neon Horizon", "Cyber Pulse", "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=300&h=300&fit=crop");
-addTrack("Silent Orbit", "Astral Collective");
+// Init
+const app = document.querySelector("#navbar") as HTMLElement | null;
+if (app) app.innerHTML = renderNavbar(currentUser);
+
+const hero = document.querySelector("#hero") as HTMLElement | null;
+if (hero) hero.innerHTML = renderHero(currentUser);
+
+const manager = new TrackManager();
+setupForm(manager);
+
+// Demo tracks (only add if no stored tracks)
+if (localStorage.getItem("tracks")) {
+  manager.addTrack("Afternoon", "vetkat", "https://i1.sndcdn.com/artworks-Ud2YSLtr4yD33tIm-UsYZhA-t500x500.jpg?w=300&h=300&fit=crop");
+  manager.addTrack("Sabr", "Nazim Rafudeen", "https://i1.sndcdn.com/artworks-alS5LTECt8b6FSwo-xyWdIg-t500x500.jpg?w=300&h=300&fit=crop");
+  manager.addTrack("Breathe Deeper", "Tame Impala", "https://i1.sndcdn.com/artworks-pJs4W0WhnD1U-0-t500x500.jpg?w=300&h=300&fit=crop");
+}
+
+
+
+/*
+//Alternative: add regardless (even if its != || === to null)
+
+if (localStorage.getItem("tracks")){
+manager.addTrack("Afternoon", "vetkat", "https://i1.sndcdn.com/artworks-Ud2YSLtr4yD33tIm-UsYZhA-t500x500.jpg?w=300&h=300&fit=crop");
+  manager.addTrack("Sabr", "Nazim Rafudeen", "https://i1.sndcdn.com/artworks-alS5LTECt8b6FSwo-xyWdIg-t500x500.jpg?w=300&h=300&fit=crop");
+  manager.addTrack("Breathe Deeper", "Tame Impala", "https://i1.sndcdn.com/artworks-pJs4W0WhnD1U-0-t500x500.jpg?w=300&h=300&fit=crop");
+}      
+  */
+
+
+// const deleteAllBtn = 
+// if (localStorage.getItem("tracks")){
+//   manager.deleteTrack();
+// }
+
+
+/*
+
+
+      li.innerHTML = `
+        ${cover}
+        <div class="track-info">
+          <h3>${track.title}</h3>
+          <p>${track.artist}</p>
+        </div>
+        <div class="track-date">
+          Added: ${track.addedAt.toLocaleDateString()}
+        </div>
+        <button class="delete-btn">✖</button>
+      `;
+
+      const deleteBtn = li.querySelector(".delete-btn") as HTMLButtonElement;
+      deleteBtn.addEventListener("click", () => this.deleteTrack(track.id));
+
+      list.appendChild(li);
+
+
+
+
+*/
+
