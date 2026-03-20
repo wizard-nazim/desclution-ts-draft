@@ -1,8 +1,8 @@
 "use strict";
 // Data
 const currentUser = {
-    firstName: "Wizard",
-    lastName: "Nazim",
+    firstName: "Nazim",
+    lastName: "Rafudeen",
     role: "Admin",
 };
 // Track Manager Class
@@ -89,7 +89,7 @@ const renderNavbar = (user) => `
 `;
 const renderHero = (user) => `
   <div class="hero">
-    <h1>Welcome back, ${user.firstName}</h1>
+    <h1>Welcome back, ${user.firstName}!</h1>
     <p>System Status: <span style="color: #00ff5e;">Online</span></p>
   </div>
 `;
@@ -119,6 +119,7 @@ if (hero)
 const manager = new TrackManager();
 setupForm(manager);
 // Demo tracks (only add if no stored tracks)
+//2 equals u comparing two values, 
 if (localStorage.getItem("tracks") === null) {
     manager.addTrack("Afternoon", "vetkat", "https://i1.sndcdn.com/artworks-Ud2YSLtr4yD33tIm-UsYZhA-t500x500.jpg?w=300&h=300&fit=crop");
     manager.addTrack("Sabr", "Nazim Rafudeen", "https://i1.sndcdn.com/artworks-alS5LTECt8b6FSwo-xyWdIg-t500x500.jpg?w=300&h=300&fit=crop");

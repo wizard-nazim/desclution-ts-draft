@@ -15,8 +15,8 @@ interface Track {
 
 // Data
 const currentUser: User = {
-  firstName: "Wizard",
-  lastName: "Nazim",
+  firstName: "Wizard Nazim",
+  lastName: "Rafudeen",
   role: "Admin",
 };
 
