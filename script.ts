@@ -160,7 +160,7 @@ if (localStorage.getItem("tracks") === null) {
 
 
 /*
-//Alternative: add regardless (even if its != || === to null)
+//Alternative: add regardless:
 
 if (localStorage.getItem("tracks")){
 manager.addTrack("Afternoon", "vetkat", "https://i1.sndcdn.com/artworks-Ud2YSLtr4yD33tIm-UsYZhA-t500x500.jpg?w=300&h=300&fit=crop");
