@@ -12,19 +12,14 @@
 
 ---
 
-### Quick tips for learning
+###  Tips for learning:
 
 > Look at Track interface → how optional fields (?) work
-> Array of objects (tracks: Track[])
-> DOM manipulation in functions (renderTracks)
+> Array of objects ```(tracks: Track[])```
+> DOM manipulation in functions ```(renderTracks)```
 > Event listener + preventDefault
 > Type casting (as HTMLInputElement)
 > Template literals for HTML
 > Date handling
 
 ---
-
-### Self Notes:
-
-> For album covers: paste direct image URLs ( from Unsplash, Pexels)
-> blank → shows 🎵 emoji fallback
