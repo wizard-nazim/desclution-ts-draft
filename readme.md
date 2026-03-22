@@ -1,6 +1,15 @@
-### Wizard Nazim Log 18/3/2026:
+# Description:
 
-<p> JSFiddle Prototype extended for learning. </p>
+Built a small TypeScript learning project implementing typed interfaces, a class-based TrackManager, DOM rendering, and localStorage persistence.
+The project allows users to add and remove tracks while dynamically updating the UI and saving state between sessions.
+
+---
+
+### Next, I’ll plan on implementing:
+- modules
+- proper typing on deserialization
+- safer rendering
+- separation of UI / state
 
 ---
 
@@ -23,3 +32,4 @@
 - Date handling
 
 ---
+
