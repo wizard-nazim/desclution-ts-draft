@@ -1,49 +1,50 @@
-# Description:
+# Desclution TS Draft
 
-Built a small TypeScript learning project implementing typed interfaces, a class-based TrackManager, DOM rendering, and localStorage persistence.
-The project allows users to add and remove tracks while dynamically updating the UI and saving state between sessions.
+A small **TypeScript learning project** that demonstrates typed interfaces, a class-based architecture, DOM rendering, and `localStorage` persistence.
 
----
-
-### Next, I’ll plan on implementing:
-- modules
-- proper typing on deserialization
-- safer rendering
-- separation of UI / state
+Users can **add and remove tracks**, the UI updates dynamically, and the state is automatically saved between browser sessions.
 
 ---
 
-### Running Project:
-
-<<<<<<< HEAD
-> ```npm install -g typescript live-server``` 
-> ```tsc script.ts```
-> ```live-server```
->```tsc --watch / tsc -w ```
-=======
-- ```npm install -g typescript live-server``` 
-- ```tsc script.ts```
-- ```live-server```
->>>>>>> 63a477b5753aaf34a307cd935e818d8f3c4ceb69
+- Fully typed `Track` interface with optional fields
+- `TrackManager` / `trackService` class for state management
+- Modular DOM rendering (`uiRenderer.ts`)
+- `localStorage` persistence (data survives page refresh)
+- Clean separation of concerns (service + renderer + main entry)
 
 ---
 
-###  Tips for learning:
+## How to Run
 
-- Look at Track interface → how optional fields (?) work
-- Array of objects ```(tracks: Track[])```
-- DOM manipulation in functions ```(renderTracks)```
-- Event listener + preventDefault
+1. **Install global tools** (one-time):
+   ```bash
+   npm install -g typescript live-server
+   ```
+
+2. compile all ts files: ```tsc``` 
+
+3. (Optional) Watch mode for auto-recompilation: ```tsc -w```
+
+4. Start live-server: ```live-server```
+
+---
+
+### This project was built to practice:
+
+- Optional fields in interfaces (?)
+- Array of typed objects (Track[])
+- Class-based architecture
+- DOM manipulation with TypeScript
+- Event listeners + preventDefault()
 - Type casting (as HTMLInputElement)
-- Template literals for HTML
+- Template literals for dynamic HTML
 - Date handling
+- localStorage serialization/deserialization
 
----
 
-<<<<<<< HEAD
-### Self Notes:
+### Next Steps (Planned)
 
-> For album covers: paste direct image URLs ( from Unsplash, Pexels)
-> blank → shows 💿 emoji fallback
-=======
->>>>>>> 63a477b5753aaf34a307cd935e818d8f3c4ceb69
+- Full ES modules (import/export)
+- Proper typing on JSON.parse / deserialization
+- Safer rendering (e.g., virtual DOM or more robust updates)
+- Complete separation of UI and state logic
