@@ -3,29 +3,30 @@ import { renderTrackList, renderUserUI } from './uiRenderer.js';
 
 const service = new TrackService();
 
-// Mock User Data (Moved from the old script.ts)
+// Mock User Data
 const user = { firstName: "Nazim", role: "Admin" };
 
-const updateView = () => {
-  renderTrackList(service.getAll());
-};
-
-// Initial Render
+// Initialization
 renderUserUI(user.firstName, user.role);
-updateView();
+
+// The service now handles telling the UI when to update!
+service.subscribe(renderTrackList);
 
 const form = document.getElementById("trackForm") as HTMLFormElement;
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
   
-  // Added .trim() to prevent empty-space entries
-  const title = (document.getElementById("title") as HTMLInputElement).value.trim();
-  const artist = (document.getElementById("artist") as HTMLInputElement).value.trim();
-  const coverUrl = (document.getElementById("coverUrl") as HTMLInputElement).value.trim();
+  const titleInput = document.getElementById("title") as HTMLInputElement;
+  const artistInput = document.getElementById("artist") as HTMLInputElement;
+  const coverInput = document.getElementById("coverUrl") as HTMLInputElement;
+
+  const title = titleInput.value.trim();
+  const artist = artistInput.value.trim();
+  const coverUrl = coverInput.value.trim();
   
   if (title && artist) {
+    // Service handles the update notification internally
     service.add(title, artist, coverUrl || undefined);
-    updateView();
     form.reset();
   }
 });
@@ -35,6 +36,5 @@ document.getElementById("tracksList")?.addEventListener("click", (e) => {
   if (target.classList.contains("delete-btn")) {
     const id = Number(target.getAttribute("data-id"));
     service.remove(id);
-    updateView();
   }
 });

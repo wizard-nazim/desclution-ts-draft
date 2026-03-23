@@ -6,8 +6,11 @@ export interface Track {
   addedAt: Date;
 }
 
+type Listener = (tracks: Track[]) => void;
+
 export class TrackService {
   private tracks: Track[] = [];
+  private listeners: Listener[] = [];
 
   constructor() {
     this.tracks = this.load();
@@ -28,6 +31,17 @@ export class TrackService {
 
   private save(): void {
     localStorage.setItem("tracks", JSON.stringify(this.tracks));
+    this.notify();
+  }
+
+  private notify(): void {
+    this.listeners.forEach(listener => listener([...this.tracks]));
+  }
+
+  public subscribe(listener: Listener): void {
+    this.listeners.push(listener);
+    // Immediately provide current data to the new subscriber
+    listener([...this.tracks]);
   }
 
   public getAll(): Track[] {

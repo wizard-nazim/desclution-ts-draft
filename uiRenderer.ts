@@ -13,22 +13,25 @@ export const renderTrackList = (tracks: Track[]) => {
     <li class="track-item">
       <div class="track-cover">
         ${track.coverUrl 
-          ? `<img src="${track.coverUrl}" style="width:100%; height:100%; object-fit:cover;">` 
+          ? `<img src="${track.coverUrl}" 
+                  onerror="this.parentElement.innerHTML='💿'" 
+                  style="width:100%; height:100%; object-fit:cover;">` 
           : '💿'}
       </div>
       <div class="track-info">
         <h3>${track.title}</h3>
         <p>${track.artist}</p>
       </div>
-      <button class="delete-btn" data-id="${track.id}">✖</button>
+      <button type="button" class="delete-btn" data-id="${track.id}">✖</button>
     </li>
   `).join('');
 };
 
 export const renderUserUI = (firstName: string, role: string) => {
-  const profileContainer = document.querySelector(".nav-placeholder");
+  // Matches the 'nav-spacer' div in your index.html
+  const profileContainer = document.querySelector(".nav-spacer");
   if (profileContainer) {
-    profileContainer.innerHTML = `${firstName} (${role})`;
+    profileContainer.innerHTML = `<div class="user-profile">${firstName} (${role})</div>`;
   }
   
   const heroContainer = document.getElementById("hero");

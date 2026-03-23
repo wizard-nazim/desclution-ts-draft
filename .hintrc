@@ -9,6 +9,6 @@
     "not safari <= 26.2"
   ],
   "hints": {
-  
+    "css-prefix-order": "off"
   }
 }

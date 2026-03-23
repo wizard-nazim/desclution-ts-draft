@@ -1,5 +1,6 @@
 export class TrackService {
     tracks = [];
+    listeners = [];
     constructor() {
         this.tracks = this.load();
     }
@@ -19,6 +20,15 @@ export class TrackService {
     }
     save() {
         localStorage.setItem("tracks", JSON.stringify(this.tracks));
+        this.notify();
+    }
+    notify() {
+        this.listeners.forEach(listener => listener([...this.tracks]));
+    }
+    subscribe(listener) {
+        this.listeners.push(listener);
+        // Immediately provide current data to the new subscriber
+        listener([...this.tracks]);
     }
     getAll() {
         return [...this.tracks];
