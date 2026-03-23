@@ -17,7 +17,10 @@ export class TrackService {
     const data = localStorage.getItem("tracks");
     if (!data) return [];
     try {
-      return JSON.parse(data).map((t: any) => ({ ...t, addedAt: new Date(t.addedAt) }));
+      return JSON.parse(data).map((t: any) => ({ 
+        ...t, 
+        addedAt: new Date(t.addedAt) 
+      }));
     } catch {
       return [];
     }
@@ -32,7 +35,13 @@ export class TrackService {
   }
 
   public add(title: string, artist: string, coverUrl?: string): void {
-    const newTrack: Track = { id: Date.now(), title, artist, coverUrl, addedAt: new Date() };
+    const newTrack: Track = { 
+      id: Date.now(), 
+      title, 
+      artist, 
+      coverUrl, 
+      addedAt: new Date() 
+    };
     this.tracks.push(newTrack);
     this.save();
   }

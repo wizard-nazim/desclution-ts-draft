@@ -8,7 +8,10 @@ export class TrackService {
         if (!data)
             return [];
         try {
-            return JSON.parse(data).map((t) => ({ ...t, addedAt: new Date(t.addedAt) }));
+            return JSON.parse(data).map((t) => ({
+                ...t,
+                addedAt: new Date(t.addedAt)
+            }));
         }
         catch {
             return [];
@@ -21,7 +24,13 @@ export class TrackService {
         return [...this.tracks];
     }
     add(title, artist, coverUrl) {
-        const newTrack = { id: Date.now(), title, artist, coverUrl, addedAt: new Date() };
+        const newTrack = {
+            id: Date.now(),
+            title,
+            artist,
+            coverUrl,
+            addedAt: new Date()
+        };
         this.tracks.push(newTrack);
         this.save();
     }
