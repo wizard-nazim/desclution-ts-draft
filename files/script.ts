@@ -15,7 +15,7 @@ interface Track {
 
 // Data
 const currentUser: User = {
-  firstName: "Wizard Nazim",
+  firstName: "Nazim",
   lastName: "Rafudeen",
   role: "Admin",
 };
@@ -80,7 +80,7 @@ class TrackManager {
 
       const cover = track.coverUrl
         ? `<img src="${track.coverUrl}" alt="${track.title} cover" class="track-cover">`
-        : `<div class="track-cover">🎵</div>`;
+        : `<div class="track-cover">💿</div>`;
 
       li.innerHTML = `
         ${cover}

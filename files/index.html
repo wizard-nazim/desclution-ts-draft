@@ -6,21 +6,22 @@
   <title>Desclution</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-   <nav id="navbar" class="navbar">
-  <div class="logo"><strong>Desclution</strong></div>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Tracks</a></li>
-    <li><a href="#">About</a></li>
-  </ul>
-  <div class="nav-spacer"></div> 
-</nav>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!-- Hero -->
   <div id="hero"></div>
 
+  <!-- Main content: Tracklist form + list -->
   <main class="container">
+
     <section class="add-track">
-      <header class="sbanner"><div class="sbanner-content"></div></header>
+      <!--Banner-1-->
+      <header class="sbanner">
+        <div class="sbanner-content"></div>
+      </header>
+
       <h2>Submit Track:</h2>
       <form id="trackForm">
         <input type="text" id="title" placeholder="Title" required />
@@ -31,16 +32,22 @@
     </section>
 
     <section class="tracklist">
-      <header class="banner"><div class="banner-content"></div></header>
+      <!-- Banner-2 -->
+      <header class="banner">
+        <div class="banner-content"></div>
+      </header>
+
       <h2>Audio Tracks:</h2>
       <ul id="tracksList"></ul>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <p>© 2026 Desclution — Built with TypeScript • Wizard Nazim</p>
+    <p>Learning project — preparing for React</p>
   </footer>
 
-  <script src="main.js" type="module"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -22,11 +22,9 @@ background-size: 100% 100%;
 */
 
 
-
 .navbar {
-  display: grid;
-  /* Creates 3 columns: 1st and 3rd share remaining space, middle fits content */
-  grid-template-columns: 1fr auto 1fr; 
+  display: flex; 
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background: rgba(0, 0, 0, 0.685); 
@@ -34,19 +32,10 @@ background-size: 100% 100%;
   border-bottom: 4.5px solid #1b9621;
 }
 
-/* Ensure the links themselves are centered in their column */
 .nav-links {
   display: flex;
   gap: 2.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* If you have a profile section or a placeholder div on the right */
-.user-profile, .nav-placeholder {
-  flex: 1; /* Takes up 1/3rd of the space on the right */
-  text-align: right;
+  list-style: none;  
 }
 
 .nav-links a {
@@ -63,7 +52,6 @@ background-size: 100% 100%;
   text-align: center;
   margin-top: 3rem;
 }
-
 
 /* Banner */
 .banner {

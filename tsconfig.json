@@ -1,14 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ES2022",
-    "outDir": "./",
-    "rootDir": "./",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    /* Basic Options */
+    "target": "ESNext",                                  /* Compile to the latest JavaScript version */
+    "module": "ESNext",                                  /* Use modern ESM (import/export) syntax */
+    "moduleResolution": "node",                          /* Helps TS find your files like a pro */
+    "outDir": "./",                                      /* Keep .js files in the root for your current setup */
+    "rootDir": "./",                                     /* Where your .ts files live */
+    "sourceMap": true,                                   /* Helps you debug TS code in the browser console */
+    
+    /* Strictness & Safety */
+    "strict": true,                                      /* Enables all strict type-checking options */
+    "noImplicitAny": true,                               /* Prevents you from accidentally using 'any' */
+    "strictNullChecks": true,                            /* Forces you to handle null/undefined safely */
+    
+    /* Interop & Advanced */
+    "esModuleInterop": true,                             /* Fixes compatibility with older JS modules */
+    "skipLibCheck": true,                                /* Speeds up compilation by skipping library checks */
+    "forceConsistentCasingInFileNames": true             /* Prevents issues when moving between Windows and Linux */
   },
-  "include": ["script.ts"],
+  "include": ["*.ts"],                                   /* Tells TS to look for every .ts file in this folder */
   "exclude": ["node_modules"]
 }

@@ -9,6 +9,7 @@
 > ```npm install -g typescript live-server``` 
 > ```tsc script.ts```
 > ```live-server```
+>```tsc --watch / tsc -w ```
 
 ---
 
@@ -27,4 +28,4 @@
 ### Self Notes:
 
 > For album covers: paste direct image URLs ( from Unsplash, Pexels)
-> blank → shows 🎵 emoji fallback
+> blank → shows 💿 emoji fallback
