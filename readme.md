@@ -15,16 +15,10 @@ The project allows users to add and remove tracks while dynamically updating the
 
 ### Running Project:
 
-<<<<<<< HEAD
 > ```npm install -g typescript live-server``` 
 > ```tsc script.ts```
 > ```live-server```
 >```tsc --watch / tsc -w ```
-=======
-- ```npm install -g typescript live-server``` 
-- ```tsc script.ts```
-- ```live-server```
->>>>>>> 63a477b5753aaf34a307cd935e818d8f3c4ceb69
 
 ---
 
@@ -40,10 +34,7 @@ The project allows users to add and remove tracks while dynamically updating the
 
 ---
 
-<<<<<<< HEAD
 ### Self Notes:
 
 > For album covers: paste direct image URLs ( from Unsplash, Pexels)
 > blank → shows 💿 emoji fallback
-=======
->>>>>>> 63a477b5753aaf34a307cd935e818d8f3c4ceb69
