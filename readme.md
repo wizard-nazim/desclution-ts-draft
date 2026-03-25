@@ -23,6 +23,10 @@ Users can **add and remove tracks**, the UI updates dynamically, and the state i
 
 2. compile all ts files: ```tsc``` 
 
+> ```npm install -g typescript live-server``` 
+> ```tsc script.ts```
+> ```live-server```
+>```tsc --watch / tsc -w ```
 3. (Optional) Watch mode for auto-recompilation: ```tsc -w```
 
 4. Start live-server: ```live-server```
@@ -42,6 +46,10 @@ Users can **add and remove tracks**, the UI updates dynamically, and the state i
 - localStorage serialization/deserialization
 
 
+### Self Notes:
+
+> For album covers: paste direct image URLs ( from Unsplash, Pexels)
+> blank → shows 💿 emoji fallback
 ### Next Steps (Planned)
 
 - Full ES modules (import/export)
